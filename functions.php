@@ -18,7 +18,7 @@ require(get_theme_file_path('inc/request_rom.php'));
 require(get_theme_file_path('inc/help_center.php'));
 
 require(get_theme_file_path('inc/custom_cpt_tag_path.php'));
-
+require(get_theme_file_path('inc/custom_code_manager.php'));
 
 
 function remove_trash_from_custom_post_type( $actions, $post ) {

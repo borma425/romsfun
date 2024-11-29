@@ -47,47 +47,30 @@ if (isset($_GET['s']) && isset($_GET['os'])) {
     ], $array_acf);
 }
 
+
+
+
+
+
+
+// Set up pagination
+$CPT = CPT_Redirect_link($current_post_type);
+
 // Get posts
-$context["posts"] = Timber::get_posts($args);
-
-// Set up pagination
-$CPT = CPT_Redirect_link($current_post_type);
-$current_page = get_query_var('paged') ? get_query_var('paged') : 1; // Current page number
-$total_pages = 3; // Example total pages, you can calculate this based on your query results
-
-// Base URL for pagination
-$base_url = $context['current_url'] . '/page/';
-
-$base_url = home_url("/see/{$CPT["type"]}/{$current_tag}/page/");
-
-
-// Construct the pagination links
-$pagination_links = [];
-for ($i = 1; $i <= $total_pages; $i++) {
-    $pagination_links[] = [
-        'number' => $i,
-        'link' => "{$base_url}{$i}/",
-        'current' => ($i === $current_page),
-    ];
-}
-
-// Create prev and next links
-$prev_link = $current_page > 1 ? "{$base_url}" . ($current_page - 1) . '/' : '';
-$next_link = $current_page < $total_pages ? "{$base_url}" . ($current_page + 1) . '/' : '';
-
-$context['pagination'] = [
-    'prev' => $prev_link,
-    'next' => $next_link,
-    'pages' => $pagination_links,
-];
+$posts = Timber::get_posts($args);
 
 
 
+$context = Timber::context([
+    'posts' => $posts,
+    'pagination' => $posts,
+    'current_cpt_link' =>  $CPT["link"],
+    'current_cpt_type' => $CPT["type"],
+    'current_tagname' => $current_tag,
+
+]);
 
 
-$context['current_cpt_link'] = $CPT["link"];
-$context['current_cpt_type'] = $CPT["type"];
-$context['current_tagname'] = $current_tag;
 
 // Additional context setup...
 

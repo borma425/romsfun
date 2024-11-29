@@ -112,6 +112,9 @@ add_filter( 'timber/context', function( $context ) {
     $context['favicon'] = get_site_icon_url();
 
 
+    $context['custom_code_head']   = get_option('custom_code_textarea');
+    $context['custom_code_footer'] = get_option('custom_code_footer_textarea');
+
 
 
 
