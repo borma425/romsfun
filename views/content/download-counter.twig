@@ -1,0 +1,88 @@
+
+					<h1 class="h2 font-weight-bold text-break mb-4">{{ post.title   }}</h1>
+
+
+
+{% set  another_download_href   = post.meta('app_download_another_href_' ~ select)|first %}
+{% set  app_download_another_Size    = post.meta('app_download_another_Size_' ~ select)|first  %}
+
+<div id="download_box" class="bg-white border rounded shadow-sm p-3 mb-4">
+
+		<a class="btn btn-primary btn-block mx-auto mb-2" style="max-width: 360px;" href="{{ another_download_href }}">
+			<svg class="svg-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M528 288h-92.1l46.1-46.1c30.1-30.1 8.8-81.9-33.9-81.9h-64V48c0-26.5-21.5-48-48-48h-96c-26.5 0-48 21.5-48 48v112h-64c-42.6 0-64.2 51.7-33.9 81.9l46.1 46.1H48c-26.5 0-48 21.5-48 48v128c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V336c0-26.5-21.5-48-48-48zm-400-80h112V48h96v160h112L288 368 128 208zm400 256H48V336h140.1l65.9 65.9c18.8 18.8 49.1 18.7 67.9 0l65.9-65.9H528v128zm-88-64c0-13.3 10.7-24 24-24s24 10.7 24 24-10.7 24-24 24-24-10.7-24-24z"></path></svg>
+			<span class="align-middle">
+				Download				({{ app_download_another_Size }})	
+			</span>
+		</a>
+
+<a  class="btn btn-primary btn-block mx-auto mb-4 small" style="max-width: 260px;height: 42px;color: #fff;border-color: #138aac;background-color: #138aac;" href="###" rel="nofollow">
+                                <svg class="join-telegram-icon" width="24" height="24" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" style="fill: #ffffff !important;width: 36px;height: 33px;">
+                        <path d="M28.9700376,63.3244248 C47.6273373,55.1957357 60.0684594,49.8368063 66.2934036,47.2476366 C84.0668845,39.855031 87.7600616,38.5708563 90.1672227,38.528 C90.6966555,38.5191258 91.8804274,38.6503351 92.6472251,39.2725385 C93.294694,39.7979149 93.4728387,40.5076237 93.5580865,41.0057381 C93.6433345,41.5038525 93.7494885,42.63857 93.6651041,43.5252052 C92.7019529,53.6451182 88.5344133,78.2034783 86.4142057,89.5379542 C85.5170662,94.3339958 83.750571,95.9420841 82.0403991,96.0994568 C78.3237996,96.4414641 75.5015827,93.6432685 71.9018743,91.2836143 C66.2690414,87.5912212 63.0868492,85.2926952 57.6192095,81.6896017 C51.3004058,77.5256038 55.3966232,75.2369981 58.9976911,71.4967761 C59.9401076,70.5179421 76.3155302,55.6232293 76.6324771,54.2720454 C76.6721165,54.1030573 76.7089039,53.4731496 76.3346867,53.1405352 C75.9604695,52.8079208 75.4081573,52.921662 75.0095933,53.0121213 C74.444641,53.1403447 65.4461175,59.0880351 48.0140228,70.8551922 C45.4598218,72.6091037 43.1463059,73.4636682 41.0734751,73.4188859 C38.7883453,73.3695169 34.3926725,72.1268388 31.1249416,71.0646282 C27.1169366,69.7617838 23.931454,69.0729605 24.208838,66.8603276 C24.3533167,65.7078514 25.9403832,64.5292172 28.9700376,63.3244248 Z">
+                        </path>
+                    </svg>
+                                <span class="align-middle">Join To Telegram</span>
+                            </a>
+
+
+		<p class="text-center mb-3">
+			If the download doesn't start in a few seconds,			
+            <a id="click-here" href="{{ another_download_href }}">
+				<span>click here</span>
+			</a>
+		</p>
+    
+					</div>
+
+
+
+
+									<h2 class="h4 mb-4">Other available link(s)</h2>
+
+											<div class="bg-white border rounded shadow-sm p-3 mb-4">
+							<h3 class="h5 font-weight-bold">Normal Download Link</h3>
+							<table class="table table-borderless table-striped">
+								<thead>
+									<tr>
+										<th>Filename</th>
+										<th>Size</th>
+										<th>Type</th>
+									</tr>
+								</thead>
+								<tbody>
+                                
+
+
+{% for i in range(1, 10) %}
+
+
+{% set  another_download_title      = post.meta('app_download_another_Title_' ~ i)|first %}
+{% set  another_download_href   = post.meta('app_download_another_href_' ~ i)|first %}
+{% set  app_download_another_Size    = post.meta('app_download_another_Size_' ~ i)|first  %}
+{% set  app_download_another_Type       = post.meta('app_download_another_Type_' ~ i)|first  %}
+
+
+{% if another_download_href and i != select %}
+										<tr>
+										<td>
+											<a class="h6 font-weight-semibold text-break mb-0" href="{{ current_url ~ "&select=" ~ i }}">
+												{{ another_download_title }}											</a>
+										</td>
+										<td class="text-muted">{{ app_download_another_Size }}</td>
+										<td class="text-muted">{{ app_download_another_Type }}</td>
+									</tr>
+
+{% endif %}
+
+{% endfor %}
+                                
+                                
+                                									</tbody>
+							</table>
+						</div>
+					
+					
+									
+    {% include "components/inline-grid.twig/related-consoles.twig" with {
+        related_list: popular_roms,
+        title       : "Recommended for you"
+    } %}

@@ -1,0 +1,48 @@
+{% extends "base.twig" %}
+
+{% block grid_content %}
+
+
+
+{% include 'main/html-header.twig' %}
+<div id="content" class="site-content">
+
+{% include 'main/hero1.twig' %}
+
+<main class="container pt-5">
+
+
+    {% include "components/grid/related_articles.twig" with {
+        title       : "Most Recent Posts"
+    } %}
+
+
+    {% include "pages/welcome.twig" with {
+        title: welcome.title,
+        content: welcome.content
+    } %}
+
+
+{% include 'components/grid/rom_consoles.twig' %}
+
+
+    {% include "components/inline-grid.twig/related-consoles.twig" with {
+        related_list: Latest_roms_Update,
+        title       : "Latest Update ROMs"
+    } %}
+
+    {% include "components/inline-grid.twig/related-consoles.twig" with {
+        related_list: popular_roms,
+        title       : "Popular Roms"
+    } %}
+
+
+</main>
+
+
+
+</div>
+
+
+
+{% endblock %}

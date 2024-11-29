@@ -1,0 +1,191 @@
+
+
+
+{% extends "base.twig" %}
+
+{% block grid_content %}
+
+
+
+{% include 'main/html-header.twig' %}
+
+<style>
+
+@media all{
+.ninja-forms-form-wrap *,.ninja-forms-form-wrap :after,.ninja-forms-form-wrap :before{-ms-box-sizing:border-box;box-sizing:border-box;}
+.nf-response-msg{display:none;}
+.nf-field-container{clear:both;position:relative;margin-bottom:25px;}
+.nf-field-container:after{clear:both;content:"";display:block;}
+.nf-field-label label{font-weight:700;margin:0;padding:0;}
+.nf-field-element{position:relative;}
+.nf-field-element input,.nf-field-element textarea{margin:0;width:auto;height:auto;vertical-align:inherit;}
+.nf-field-element textarea{height:200px;}
+.nf-input-limit{font-size:12px;margin-top:5px;}
+.nf-form-hp{position:absolute;visibility:hidden;}
+.ninja-forms-req-symbol{color:#e80000;}
+.field-wrap{display:flex;}
+.field-wrap>div input,.field-wrap textarea{width:100%;}
+.field-wrap input[type=submit]{width:auto;}
+.nf-field-label{order:5;}
+.nf-field-element{order:15;}
+.label-above .nf-field-label{margin-bottom:10px;}
+.label-above .field-wrap{flex-direction:column;flex-flow:wrap;}
+.label-above .nf-field-element{margin:0;width:100%;}
+.nf-form-content{padding:5px;margin:0 auto;}
+.nf-form-content label{font-size:18px;line-height:20px;}
+.nf-form-content .ninja-forms-field{font-size:16px;margin:0;padding:12px;}
+.nf-form-content input.ninja-forms-field{height:50px;}
+.nf-form-content textarea.ninja-forms-field{height:200px;}
+.nf-form-content .label-above .nf-field-label{margin-bottom:10px;padding:0;}
+.nf-form-content input:not([type=button]),.nf-form-content textarea{background:#f7f7f7;border:1px solid #c4c4c4;border-radius:0;box-shadow:none;color:#787878;transition:all .5s;}
+.nf-form-content input:not([type=button]):focus,.nf-form-content textarea:focus{background:#fff;border-color:#919191;color:#919191;outline:none;transition:all .5s;}
+.nf-form-content input[type=submit]{background:#333;border:0;color:#f7f7f7;transition:all .5s;}
+.nf-form-content input[type=submit]:hover{background:#c4c4c4;color:#787878;transition:all .5s;}
+.nf-error{position:relative;}
+@media only screen and (max-width:800px){
+.nf-field-container .nf-field-label{margin-bottom:10px!important;padding:0;width:100%;order:5;}
+.nf-field-container .nf-field-label label{text-align:left;}
+.nf-field-container .nf-field-element{width:100%;order:15;}
+}
+}
+</style>
+
+
+<div id="content" class="site-content">
+	
+	
+					<div class="bg-light py-2">
+				<div class="container">
+
+    <ul id="breadcrumb" class="breadcrumb">
+    <ul id="breadcrumb" class="breadcrumb">
+        <li class="breadcrumb-item home"><a href="{{ site.link   }}" title="Home">Home</a></li>
+
+        <li class="breadcrumb-item active">Requires ROM</li> 
+
+                </ul>
+				</div>
+			</div>
+		
+
+		
+		<div class="container py-4">
+    <main id="primary" class="content-area">
+        <h1 class="h3 font-weight-bold mb-4">Requires ROM</h1>
+        <div class="mb-4 entry-content">
+<div id="nf-form-3-cont" class="nf-form-cont" aria-live="polite" aria-labelledby="nf-form-title-3" aria-describedby="nf-form-errors-3" role="form">
+	<span id="nf-form-title-3" class="nf-form-title">
+		
+	</span>
+	<div class="nf-form-wrap ninja-forms-form-wrap">
+		<div class="nf-response-msg"></div>
+		<div class="nf-debug-msg"></div>
+		<div class="nf-before-form"><nf-section>
+	
+</nf-section></div>
+		<div class="nf-form-layout">
+            
+            <form action="{{ site.url }}/requires_rom/" method="POST">
+		        <input type="hidden" name="action" value="submit_requires_rom">
+
+            
+            <div>
+			<div class="nf-before-form-content"><nf-section>
+    <div class="nf-form-fields-required">Fields marked with an <span class="ninja-forms-req-symbol">*</span> are required</div>
+    
+</nf-section></div>
+			<div class="nf-form-content "><nf-fields-wrap><nf-field>
+    <div id="nf-field-20-container" class="nf-field-container textarea-container  label-above ">
+        <div class="nf-before-field"><nf-section>
+    
+</nf-section></div>
+        <div class="nf-field"><div id="nf-field-20-wrap" class="field-wrap textarea-wrap" data-field-id="20">
+		
+		
+		
+	<div class="nf-field-label">
+		
+			<label for="nf-field-20" id="nf-label-field-20" class="">
+						 <span class="ninja-forms-req-symbol">*</span> 
+						
+			</label>
+		
+	</div>
+
+		
+		<div class="nf-field-element">
+            <textarea id="content_request" name="requested_content" required class="ninja-forms-field nf-element" placeholder="Requested content, roms game name, hacked version, or trans, link to it if available. Make sure you search on ROMSFUN before making a request."></textarea>
+
+
+</div>
+		
+		
+	</div></div>
+        <div class="nf-after-field">
+        <nf-section>
+    
+    <div class="nf-input-limit"></div>
+    
+    <div id="nf-error-20" class="nf-error-wrap nf-error" role="alert"></div>
+    
+    
+</nf-section>
+
+</div>
+    </div>
+</nf-field><nf-field>
+    <div id="nf-field-22-container" class="nf-field-container submit-container  label-above  textbox-container">
+        <div class="nf-before-field"><nf-section>
+    
+</nf-section></div>
+        <div class="nf-field"><div id="nf-field-22-wrap" class="field-wrap submit-wrap textbox-wrap" data-field-id="22">
+        <div class="nf-field-label"></div>
+        <div class="nf-field-element">
+
+
+<input id="nf-field-22" class="ninja-forms-field nf-element " type="submit" value="Submit">
+
+</div>
+        <div class="nf-error-wrap"></div>
+    </div></div>
+        <div class="nf-after-field"><nf-section>
+    
+    <div class="nf-input-limit"></div>
+    
+    <div id="nf-error-22" class="nf-error-wrap nf-error" role="alert"></div>
+    
+    
+</nf-section></div>
+    </div>
+</nf-field></nf-fields-wrap></div>
+			<div class="nf-after-form-content"><nf-section>
+    
+    <div id="nf-form-errors-3" class="nf-form-errors" role="alert"><nf-errors></nf-errors></div>
+    <div class="nf-form-hp"><nf-section>
+	<label id="nf-label-field-hp-3" for="nf-field-hp-3" aria-hidden="true">
+		If you are a human seeing this field, please leave it empty.
+		<input id="nf-field-hp-3" name="nf-field-hp" class="nf-element nf-field-hp" type="text" value="" aria-labelledby="nf-label-field-hp-3">
+	</label>
+</nf-section></div>
+</nf-section></div>
+		</div>
+	</form></div>
+		<div class="nf-after-form"><nf-section>
+	
+</nf-section></div>
+	</div>
+</div>
+
+
+
+
+</div>
+    </main>
+</div>
+		
+	</div>
+
+
+{% endblock %}
+
+

@@ -1,0 +1,126 @@
+<div dir="ltr">
+
+
+
+
+
+
+<p>Publisher : <br>
+    <input type="text" class="widefat" id="rom_Publisher" name="rom_Publisher[id]"
+        value="{{ rom_Publisher }}">
+</p>
+
+
+
+
+
+<fieldset id="rom_os" dir="ltr">
+    <legend>نظام التشغيل:</legend>
+
+<input id="rom_os_hidden" type="hidden" name="rom_os[id]" value="{{ rom_os }}" />
+<br>
+
+{% set All_rom_os = rom_os|split(',') %}
+
+{% for key, os in ["Android","MacoS","Windows","Linux"] %}
+
+
+{% if os in All_rom_os %}
+<input type="checkbox" checked="checked" value="{{ os }}">{{ os }} &nbsp;
+{% else %}
+<input type="checkbox" value="{{ os }}">{{ os }}&nbsp;
+{% endif %}
+
+{% endfor %}
+
+</fieldset>
+
+<script>
+
+var All_rom_os = [  document.getElementById("rom_os_hidden").value ];
+
+document.getElementById("rom_os").addEventListener("change",function(e) {
+
+All_rom_os = [];
+
+document.querySelectorAll('#rom_os > input').forEach(function(elem) {
+if(elem.checked == true){
+All_rom_os.push( elem.value );
+}
+});
+
+document.getElementById("rom_os_hidden").value = All_rom_os;
+
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<p>Genre : <br>
+    <input type="text" class="widefat" id="rom_Genre" name="rom_Genre[id]"
+        value="{{ rom_Genre }}">
+</p>
+<p>Region : <br>
+    <input type="text" class="widefat" id="rom_Region" name="rom_Region[id]"
+        value="{{ rom_Region }}">
+</p>
+<p>Downloads : <br>
+    <input type="text" class="widefat" id="rom_Downloads" name="rom_Downloads[id]"
+        value="{{ rom_Downloads }}">
+</p>
+<p>Released : <br>
+    <input type="text" class="widefat" id="rom_Released" name="rom_Released[id]"
+        value="{{ rom_Released }}">
+</p>
+<p> File size	 : <br>
+    <input type="text" class="widefat" id="rom_size" name="rom_size[id]"
+        value="{{ rom_size }}">
+</p>
+
+
+<p> Rating 1:5	 : <br>
+    <input type="text" class="widefat" id="rom_rating_average" name="rom_rating_average[id]"
+        value="{{ rom_rating_average }}">
+</p>
+
+
+<div style="
+    display: inline-block; /* Allows the boxes to sit inline with other elements */
+    border: 2px solid #3498db; /* Border color */
+    border-radius: 10px; /* Rounded corners */
+    padding: 21px; /* Inner spacing */
+    margin: 10px; /* Space around the box */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background-color: #ffffff; /* Background color */
+    transition: transform 0.3s; /* Smooth hover effect */
+    vertical-align: top;
+    width: 90%;
+">
+<p> Artile Title	 : <br>
+    <input type="text" class="widefat" id="rom_learn_how_work_title" name="rom_learn_how_work_title[id]"
+        value="{{ rom_learn_how_work_title }}">
+</p>
+
+
+<p> Artile Link	 : <br>
+    <input type="text" class="widefat" id="rom_learn_how_work_link" name="rom_learn_how_work_link[id]"
+        value="{{ rom_learn_how_work_link }}">
+</p>
+
+</div>
+
+
+
+
+
+
+
+</div>

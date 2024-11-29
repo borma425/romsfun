@@ -1,0 +1,40 @@
+<section class="mb-4">
+
+											<div class="d-flex align-items-center mb-4 justify-content-between">
+<h2 class="h4 mb-0">{{ title }}</h2>
+{% if is_front_page %}
+							
+<a class="btn btn-sm btn-primary small ml-3" href="{{ fn('CPT_Redirect_link','article')["link"] }}">View all</a>
+{% endif %}
+
+													</div>
+
+
+
+
+					<div class="row">
+
+					        {% for related_post in related_posts %}
+
+<div class="col-12 col-lg-6 mb-4">
+	<div class="media bg-white border rounded shadow-sm p-3">
+		<a class="embed-responsive embed-responsive-4by3 bg-cover rounded d-block mr-3 lazyloaded" data-bg="{{ related_post.thumbnail }}" style="width: 30%; background-image: url(&quot;{{ related_post.thumbnail }}&quot;);" href="{{ related_post.link }}"></a>
+		<div class="media-body">
+			<h3 class="h6 font-weight-bold">
+				<a class="text-body" href= "{{ related_post.link }}"> {{ related_post.title }}</a>
+			</h3>
+			<time class="small text-muted d-flex align-items-center" datetime="{{ related_post.date}}">
+				<svg class="flex-shrink-0 mr-1" fill="#999" height="14px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"></path></svg>
+				{{ related_post.date }}
+			</time>
+			<p class="d-none d-md-block mt-1 mb-0">{{ related_post.excerpt.length(25).read_more(false)|default('النص الافتراضي للوصف هنا.') }}</p>
+		</div>
+	</div>
+</div>
+
+
+        {% endfor %}
+
+
+					</div>
+				</section>

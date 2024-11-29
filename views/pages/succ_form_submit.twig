@@ -1,0 +1,24 @@
+
+
+
+
+{% extends "base.twig" %}
+
+{% block grid_content %}
+
+
+
+{% include 'main/html-header.twig' %}
+
+
+<div style="text-align: center; background-color: #e6f7e6; border: 1px solid #c3e6c3; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); width: 300px; margin: 50px auto;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 60px; height: 60px; fill: #28a745;">
+        <path d="M20 6L9 17l-5-5"></path>
+    </svg>
+    <h2 style="color: #28a745; margin-top: 10px; font-size: 24px;">Success!</h2>
+    <p style="color: #555; margin-top: 10px;">Your form has been submitted successfully.</p>
+</div>
+
+{% endblock %}
+
+

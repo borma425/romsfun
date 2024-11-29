@@ -1,0 +1,111 @@
+
+<header id="masthead" class="bg-primary site-header">
+		<div class="container d-flex align-items-center">
+            				<h1 class="h2 font-weight-bold text-uppercase mb-0 site-logo">
+					<a class="text-white" href="{{ site.link }}" rel="home">
+					<img src="{{ logo_100_x_100 }}" alt="{{ site.link }}" title="{{ site.link }}">
+											</a>
+				</h1>
+			                    				
+			<nav class="ml-auto site-nav">
+				<div class="d-flex d-md-none justify-content-end">
+					<button class="bg-transparent border-0 py-2 px-3 site-nav-closer" type="button">
+						<svg height="1.5rem" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"></path></svg>
+					</button>
+				</div>
+
+				<ul id="menu-site-navigation" class="menu">
+				
+
+          {% for item in sidebar_menu.items %}
+<li id="menu-item-1111" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-77914"><a href="{{ item.link|e('esc_html') }}">{{ item.title }}</a></li>
+{% endfor %}
+
+
+
+</ul>				
+			</nav>
+			<button class="text-white bg-transparent border-0 d-md-none py-3 px-0 ml-auto site-nav-toggler" type="button">
+				<svg height="1.75rem" fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg>
+			</button>
+		</div>
+	</header>
+
+	<script>
+
+	// Get elements
+const siteNavToggler = document.querySelector('.site-nav-toggler');
+const body = document.body;
+
+// Toggle site navigation
+siteNavToggler.addEventListener('click', function () {
+    if (body.classList.contains('open-site-nav')) {
+        body.classList.remove('open-site-nav');
+        body.style.overflow = '';
+        const overlay = document.querySelector('.site-overlay');
+        if (overlay) overlay.remove();
+    } else {
+        body.classList.add('open-site-nav');
+        body.style.overflow = 'hidden';
+        const overlay = document.createElement('div');
+        overlay.className = 'site-overlay';
+        body.appendChild(overlay);
+    }
+});
+
+// Close site navigation when clicking on closer or overlay
+body.addEventListener('click', function (e) {
+    const target = e.target;
+    if (target.classList.contains('site-nav-closer') || target.classList.contains('site-overlay')) {
+        e.stopPropagation();
+        body.classList.remove('open-site-nav');
+        body.style.overflow = '';
+        const overlay = document.querySelector('.site-overlay');
+        if (overlay) overlay.remove();
+    }
+});
+
+// Handle submenu toggle
+const menuItems = document.querySelectorAll('.site-nav li.menu-item-has-children');
+menuItems.forEach(function (item) {
+    item.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const subMenu = this.querySelector('.sub-menu');
+        if (subMenu) {
+            const isActive = this.classList.toggle('active');
+            // Slide up all other sub-menus
+            menuItems.forEach(function (otherItem) {
+                if (otherItem !== item) {
+                    const otherSubMenu = otherItem.querySelector('.sub-menu');
+                    if (otherSubMenu) {
+                        otherSubMenu.style.display = 'none'; // slide up effect
+                        otherItem.classList.remove('active');
+                    }
+                }
+            });
+            // Slide toggle this sub-menu
+            subMenu.style.display = isActive ? 'block' : 'none'; // toggle effect
+        }
+    });
+});
+
+// Prevent click event on navigation links
+const navLinks = document.querySelectorAll('.site-nav a');
+navLinks.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+        e.stopPropagation();
+    });
+});
+
+document.querySelectorAll('#menu-site-navigation li').forEach(function(item) {
+    item.style.cursor = 'pointer'; // Change cursor to pointer on hover
+    item.addEventListener('click', function() {
+        // Find the <a> tag inside the clicked <li> and get its href
+        var link = item.querySelector('a').href;
+        // Redirect the browser to the href
+        window.location.href = link;
+    });
+});
+
+
+</script>

@@ -1,0 +1,121 @@
+{% extends "base.twig" %}
+
+{% block grid_content %}
+
+
+
+{% include 'main/html-header.twig' %}
+
+
+<div id="content" class="site-content">
+
+		<div class="container py-4">
+	<div class="row">
+		<main id="primary" class="col-12 content-area">
+
+
+<div class="modal fade show" id="helpModal" role="dialog" style="display: block;position: relative;" aria-modal="true">
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Help center</h4>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+<form id="report-form" action="{{ current_url }}" method="POST">
+
+<input type="hidden" name="report_form_nonce" value="{{ fn('wp_create_nonce','submit_report')  }}">
+
+                        <div class="form-group">
+                            <label for="url-report">Report URL</label>
+                            <input type="url" value="No URL Yet" class="form-control" id="url-report" name="url-report" required="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user-email">Your email</label>
+                            <input type="email" class="form-control" id="user-email" name="user-email" required="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="report-type">Select Issue</label>
+                            <select class="form-control" id="report-type" name="report-type" required="">
+                                                                        <option value="Download link broken, missing"> Download link broken, missing </option>
+                                                                            <option value="File is corrupted, cannot be extracted..."> File is corrupted, cannot be extracted... </option>
+                                                                            <option value="Other"> Other </option>
+                                                                </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="report-content">Feedback - Please describe the problem (optional)</label>
+                            <textarea class="form-control" id="report-content" name="report-content" maxlength="500"></textarea>
+                        </div>
+
+                        <input type="hidden" id="report_form_nonce" name="report_form_nonce" value="4a806830bb"><input type="hidden" name="_wp_http_referer" value="/roms/3ds/pokemon-x-and-y.html">
+                        <button type="submit" class="report-btn btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-1 bi bi-send" viewBox="0 0 16 16">
+                                <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"></path>
+                            </svg>
+                            Send Report                        </button>
+                        <div class="error text-danger"></div>
+                    </form>
+                
+            </div>
+
+            <div class="modal-footer">
+                <small><i>You can send report each 10 minutes</i></small>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+					</main>
+
+	</div>
+</div>
+		
+	</div>
+
+
+
+
+
+
+<script>
+function queryParamExistUrl(param = '') {
+    param_value = new URLSearchParams(window.location.search).get(param);
+    if (param_value != null){
+     return param_value
+    }else{
+     return false
+    }
+}
+
+if( queryParamExistUrl('url') !== false ){
+
+const current_url = queryParamExistUrl('url');
+
+document.querySelector('#url-report').value = current_url;
+
+
+
+
+
+
+
+}
+
+
+</script>
+
+
+
+
+
+
+
+
+{% endblock %}
+
+

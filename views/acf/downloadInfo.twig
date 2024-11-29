@@ -1,0 +1,52 @@
+
+<hr/>
+<hr/>
+<h1 style="  text-align: center;"> 
+
+Downloads info
+
+
+</h1>
+
+ <table style="width:100%;" dir="ltr">
+
+                        <thead>
+                            <tr>
+
+
+
+<th>Title</th>
+<th style="width:80px;">size</th>
+<th style="width:30%;">type</th>
+<th style="width:30%;">link</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+{% for i in range(1, anotherLinksCount) %}
+
+{% set  another_download_title      = 'app_download_another_Title_' ~ i  %}
+{% set  another_download_href       = 'app_download_another_href_' ~ i %}
+{% set  app_download_another_Size    = 'app_download_another_Size_' ~ i %}
+{% set  app_download_another_Type    = 'app_download_another_Type_' ~ i %}
+
+
+
+
+<tr>
+<td><input type="text" name="{{ another_download_title }}[id]" value="{{ attribute(_context, another_download_title)|default('Test Text')  }}" class="widefat"></td>
+<td><input type="text" name="{{ app_download_another_Size }}[id]" value="{{ attribute(_context, app_download_another_Size)  }}" class="widefat"></td>
+<td><input type="text" name="{{ app_download_another_Type }}[id]" value="{{ attribute(_context, app_download_another_Type) }}" class="widefat"></td>
+
+<td><input type="text" name="{{ another_download_href }}[id]" value="{{ attribute(_context, another_download_href) }}" class="widefat"></td>
+
+</tr>
+
+{% endfor %}
+
+
+</tbody>
+</table>
