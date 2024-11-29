@@ -12,7 +12,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1; // Get current pag
 
 $args = [
     'post_type' => $current_post_type,
-    'posts_per_page' => 6,
+    'posts_per_page' => 20,
     'orderby' => 'date',
     'order' => 'DESC',
     'paged' => $paged, // Set pagination here
