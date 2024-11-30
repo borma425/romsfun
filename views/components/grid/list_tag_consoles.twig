@@ -31,6 +31,11 @@
 	<section class="py-4">
 		<div class="container">
 
+
+
+
+
+
 			<div class="d-flex mb-4">
 				<h1 class="h2 font-weight-bold mb-0">{{ rom_title }}</h1>
 
@@ -40,6 +45,12 @@
 
                             </div>
 
+<div class="active-filter mb-4">
+                <div class="mb-2"> <strong>Sorted by: </strong>
+                    <span class="badge badge-success mx-1 px-2 py-1">Most popular</span>
+                    <span class="badge badge-success mx-1 px-2 py-1">Descending</span>
+                </div>
+            </div>
 
 {% if current_cpt_type == "emulators" %}
 <form class="" method="GET" action="{{ current_url }}">
@@ -72,9 +83,12 @@
 
 <div class="row layout ">
 
+{% set sorted_posts = posts|sort((post1, post2) => 
+    (post2.meta('rom_Downloads')|first|replace({',': ''})|raw) <=> 
+    (post1.meta('rom_Downloads')|first|replace({',': ''})|raw)
+) %}
 
-
- {% for post in posts %}
+ {% for post in sorted_posts %}
 
 
 
