@@ -6,7 +6,7 @@
 
 
         {% for image_id in gallery_images %}
-            {% set image = TimberImage(image_id) %}
+            {% set image = get_image(image_id) %}
 <div class="col-auto col-small">
 <a data-fancybox="gallery" href="{{ image.src }}">
 <img style="max-height: 300px;" loading="lazy" src="{{ image.src }}" alt="{{ image.alt }}">
