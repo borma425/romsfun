@@ -14,6 +14,13 @@ function custom_see_rewrite_rule() {
         'index.php?post_type=$matches[1]&tag=$matches[2]',   // Capture post_type and tag
         'top'
     );
+
+        // Rule for /see/{post_type}
+        add_rewrite_rule(
+            '^see/([^/]*)/?$',   
+            'index.php?post_type=$matches[1]',   
+            'top'
+        );
 }
 add_action('init', 'custom_see_rewrite_rule');
 
@@ -31,16 +38,28 @@ add_filter('query_vars', 'custom_register_query_vars');
 function custom_see_template($template) {
     $post_type = get_query_var('post_type');  // Get 'post_type' from query
     $tag = get_query_var('tag');              // Get 'tag' from query
-    
-    if ($post_type && $tag) {
-        // Look for the custom template 'tag-archive.php' in the theme directory
-        $new_template = locate_template('tag-archive.php');
-        if ($new_template) {
-            return $new_template;   // If found, use 'tag-archive.php' as the template
+
+    if ($post_type && !$tag) {
+        // Check if it's a custom post type archive
+        if (post_type_exists($post_type)) {
+            $new_template = locate_template('archive-' . $post_type . '.php');
+            if ($new_template) {
+                return $new_template;   // Use the specific archive template if found
+            }
         }
     }
-    return $template;  // Use default template if 'post_type' or 'tag' is not set
+
+    if ($post_type && $tag) {
+        // Look for the custom template 'tag-archive.php'
+        $new_template = locate_template('tag-archive.php');
+        if ($new_template) {
+            return $new_template;   // Use 'tag-archive.php' if found
+        }
+    }
+
+    return $template;  // Use the default template if no conditions are met
 }
+
 add_filter('template_include', 'custom_see_template');
 
 // 4. Flush Rewrite Rules After Theme Switch (Only Needed Once)
