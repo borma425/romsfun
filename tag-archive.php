@@ -1,27 +1,34 @@
 <?php
     
-$current_tag = get_query_var('tag'); // Retrieve the tag from the URL
 $current_post_type = get_query_var('post_type'); // Retrieve the CPT from the URL
 
-// Get the tag by slug
-$term = get_term_by('slug', $current_tag, 'post_tag');
+
+$current_tag_name = get_query_var('tag'); // Retrieves the tag name (e.g., 'gbaroms')
+
+// Retrieve the tag term object using the tag name
+$term = get_term_by('name', $current_tag_name, 'post_tag');
+
+// Check if the term exists
+if ($term) {
+    $term_id = $term->term_id;  // Get the term ID
+} else {
+    $term_id = 0;  // Fallback if no term found (optional)
+}
 
 $context = Timber::context();
 
 $paged = get_query_var('paged') ? get_query_var('paged') : 1; // Get current page number
 
 $args = [
-    'post_type' => $current_post_type,           // The post type you're working with
-    'posts_per_page' => 20,                       // Limit the number of posts
-    'orderby' => 'meta_value_num',                // Order by numeric meta value
-    'order' => 'DESC',                            // Highest first
-    'meta_key' => 'rom_Downloads',                // Custom field to sort by
-    'paged' => $paged,                            // For pagination
+    'post_type' => $current_post_type,  // The post type you're working with (ensure this is set)
+    'posts_per_page' => 20,             // Limit the number of posts
+    'order' => 'DESC',                  // Highest first
+    'paged' => $paged,                  // For pagination
     'tax_query' => [
         [
-            'taxonomy' => 'post_tag',
-            'field'    => 'term_id',
-            'terms'    => $term ? $term->term_id : 0,  // Taxonomy filter (if applicable)
+            'taxonomy' => 'post_tag',    // Taxonomy is 'post_tag' (tags)
+            'field'    => 'term_id',     // Query by term ID
+            'terms'    => $term_id,      // The term ID for the tag
         ],
     ],
 ];

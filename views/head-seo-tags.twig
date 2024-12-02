@@ -18,7 +18,8 @@ fn('is_post_type_archive','roms') ?  '   Roms   ' :
 fn('is_home') or fn('is_front_page') ? homeName ~ " - " ~ homeDescription :
 fn('is_singular') ?   mainTitle:
 fn('is_search') ?  search_query :
-fn('get_query_var','paged') ? mainTitle :
+fn('get_query_var','paged') ? current_url | split('/') | last :
+fn('get_query_var','tag')  ? current_url | split('/') | last :
 
 fn('is_404') ? "  404 - Not Found:" ~ homeName : homeName
 %}
