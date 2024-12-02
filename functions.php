@@ -33,3 +33,5 @@ function remove_trash_from_custom_post_type( $actions, $post ) {
     return $actions;
 }
 add_filter( 'post_row_actions', 'remove_trash_from_custom_post_type', 10, 2 );
+
+
