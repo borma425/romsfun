@@ -21,6 +21,14 @@ function custom_see_rewrite_rule() {
             'index.php?post_type=$matches[1]',   
             'top'
         );
+
+           // Matches /see (no additional parameters)
+    add_rewrite_rule(
+        '^see/?$', 
+                   'index.php?post_type=roms',   
+
+        'top'
+    );
 }
 add_action('init', 'custom_see_rewrite_rule');
 
